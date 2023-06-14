@@ -1,0 +1,107 @@
+.container {
+  max-width: 1200px;
+  min-width: 800px;
+  margin: 0 auto 0 auto;
+}
+
+.header {
+  height: 50px;
+  border: solid 1px grey;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header > span {
+  margin: 0 15px 0 15px;
+}
+
+.form {
+  background-color: rgb(240, 240, 240);
+  height: 100px;
+  border-radius: 10px;
+  padding: 0 15px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.input-container {
+  min-width: 800px;
+}
+
+.input-container > input,
+.form > button {
+  border: none;
+  border-radius: 10px;
+  height: 35px;
+  margin-right: 20px;
+}
+
+.input-container > p {
+  font-weight: 800;
+  line-height: 2.3;
+  display: inline-block;
+  margin: 0 20px 0 10px;
+}
+
+.input-container > input {
+  width: 250px;
+}
+
+.form > button {
+  width: 150px;
+  min-width: 80px;
+  color: white;
+  background-color: rgb(178, 178, 178);
+}
+
+.todo-card {
+  border: solid 5px rgb(178, 178, 178);
+  border-radius: 15px;
+
+  width: 300px;
+  height: 200px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin: 0 20px 20px 0;
+}
+
+.todo-container {
+  margin: 20px;
+}
+
+.todo-container > h2,
+.text-container > h3 {
+  font-size: 25px;
+  font-weight: 800;
+  margin: 20px 0 20px 0;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.text-container {
+  margin: 0 0 30px 5px;
+}
+.btn-container > button {
+  background-color: transparent;
+  width: 120px;
+  height: 40px;
+  border-radius: 10px;
+  margin: 5px;
+}
+
+.btn-container > button:nth-child(1) {
+  border: solid 2px rgb(255, 188, 199);
+}
+
+.btn-container > button:nth-child(2) {
+  border: solid 2px rgb(152, 215, 251);
+}
