@@ -1,20 +1,13 @@
 import "./reset.css";
 import "./App.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { nanoid } from "nanoid";
 
-function App() {
-  const [todos, setTodos] = useState([
-    { id: 1, title: "1", content: "1", isDone: true },
-    { id: 2, title: "2", content: "2", isDone: true },
-    { id: 3, title: "3", content: "3", isDone: false },
-    { id: 4, title: "4", content: "4", isDone: false },
-  ]);
-
-  // useState는 비동기 함수이기 때문에 바로 확인을 위해서는 useEffect 메서드가 필요
-  useEffect(() => {
-    console.log(todos);
-  }, [todos]);
+const App = () => {
+  const [todos, setTodos] = useState(
+    () => JSON.parse(window.localStorage.getItem("todos")) || []
+  );
+  window.localStorage.setItem("todos", JSON.stringify(todos));
 
   //Todo 삭제하기
   const deleteBtnHandler = (id) => {
@@ -98,7 +91,7 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
 //working 섹션 그리기
 const PaintWorkingTodo = ({ item, finishBtnHandler, deleteBtnHandler }) => {
@@ -143,6 +136,7 @@ const AddTodo = ({ todos, setTodos }) => {
 
   //todo 추가하기
   const addBtnHandler = (event) => {
+    event.preventDefault();
     const addedTodo = {
       id: nanoid(),
       // id: todos?.[todos.length - 1]?.id + 1 || 1,
@@ -153,8 +147,9 @@ const AddTodo = ({ todos, setTodos }) => {
     setTodos([...todos, addedTodo]);
     setTitle("");
     setContent("");
-    event.preventDefault();
-    console.log(addedTodo);
+
+    // //로컬스토리지에 저장
+    // localStorage.setItem("todos", JSON.stringify(todos));
   };
 
   return (
