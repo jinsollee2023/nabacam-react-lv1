@@ -1,9 +1,13 @@
 import "./reset.css";
 import "./App.css";
-import { useState } from "react";
-import { nanoid } from "nanoid";
 
-const App = () => {
+import { useState } from "react";
+import PaintWorkingTodo from "./components/PaintWorkingTodo.jsx";
+import PaintDoneTodo from "./components/PaintDoneTodo.jsx";
+import AddTodo from "./components/AddTodo";
+
+function App() {
+
   const [todos, setTodos] = useState(
     () => JSON.parse(window.localStorage.getItem("todos")) || []
   );
@@ -93,87 +97,4 @@ const App = () => {
   );
 };
 
-//working 섹션 그리기
-const PaintWorkingTodo = ({ item, finishBtnHandler, deleteBtnHandler }) => {
-  return (
-    <div className="todo-card" key={item.id}>
-      <div className="todo-card-content">
-        <div className="text-container">
-          <h3>{item.title}</h3>
-          <p>{item.content}</p>
-        </div>
-        <div className="btn-container">
-          <button onClick={() => finishBtnHandler(item)}>완료</button>
-          <button onClick={() => deleteBtnHandler(item.id)}>삭제하기</button>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-//done 섹션 그리기
-const PaintDoneTodo = ({ item, cancleBtnHandler, deleteBtnHandler }) => {
-  return (
-    <div className="todo-card" key={item.id}>
-      <div className="todo-card-content">
-        <div className="text-container">
-          <h3>{item.title}</h3>
-          <p>{item.content}</p>
-        </div>
-        <div className="btn-container">
-          <button onClick={() => cancleBtnHandler(item)}>취소</button>
-          <button onClick={() => deleteBtnHandler(item.id)}>삭제하기</button>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-//todo 추가하기
-const AddTodo = ({ todos, setTodos }) => {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-
-  //todo 추가하기
-  const addBtnHandler = (event) => {
-    event.preventDefault();
-    const addedTodo = {
-      id: nanoid(),
-      // id: todos?.[todos.length - 1]?.id + 1 || 1,
-      title,
-      content,
-      isDone: false,
-    };
-    setTodos([...todos, addedTodo]);
-    setTitle("");
-    setContent("");
-
-    // //로컬스토리지에 저장
-    // localStorage.setItem("todos", JSON.stringify(todos));
-  };
-
-  return (
-    <form className="form" onSubmit={addBtnHandler}>
-      <div className="input-container">
-        <p>제목</p>
-        <input
-          value={title}
-          onChange={(e) => {
-            setTitle(e.target.value);
-            // console.log("title", title);
-          }}
-        />
-        <p>내용</p>
-        <input
-          value={content}
-          onChange={(e) => {
-            setContent(e.target.value);
-            // console.log("content", content);
-          }}
-        />
-      </div>
-      <button>추가하기</button>
-    </form>
-  );
-};
 export default App;
