@@ -55,6 +55,7 @@
   min-width: 80px;
   color: white;
   background-color: rgb(178, 178, 178);
+  cursor: pointer;
 }
 
 .todo-card {
@@ -96,6 +97,7 @@
   height: 40px;
   border-radius: 10px;
   margin: 5px;
+  cursor: pointer;
 }
 
 .btn-container > button:nth-child(1) {
