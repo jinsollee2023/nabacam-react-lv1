@@ -7,6 +7,7 @@ import PaintDoneTodo from "./components/PaintDoneTodo.jsx";
 import AddTodo from "./components/AddTodo";
 
 function App() {
+
   const [todos, setTodos] = useState(
     () => JSON.parse(window.localStorage.getItem("todos")) || []
   );
@@ -94,6 +95,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
 export default App;
