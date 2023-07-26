@@ -1,13 +1,19 @@
 import { nanoid } from "nanoid";
 import { useState } from "react";
+import { Todo } from "../types";
+import React from "react";
 
+interface Props {
+  todos: Todo[];
+  setTodos(todos: Todo[]): void;
+}
 //todo 추가하기
-const AddTodo = ({ todos, setTodos }) => {
+const AddTodo = ({ todos, setTodos }: Props) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
   //todo 추가하기
-  const addBtnHandler = (event) => {
+  const addBtnHandler = (event: { preventDefault: () => void }) => {
     event.preventDefault();
     const addedTodo = {
       id: nanoid(),

@@ -1,28 +1,29 @@
 import "./reset.css";
 import "./App.css";
-
 import { useState } from "react";
-import PaintWorkingTodo from "./components/PaintWorkingTodo.jsx";
-import PaintDoneTodo from "./components/PaintDoneTodo.jsx";
+import PaintWorkingTodo from "./components/PaintWorkingTodo";
+import PaintDoneTodo from "./components/PaintDoneTodo";
 import AddTodo from "./components/AddTodo";
+import { Todo } from "./types";
+import React from "react";
 
-function App() {
-
-  const [todos, setTodos] = useState(
-    () => JSON.parse(window.localStorage.getItem("todos")) || []
+const App = () => {
+  const [todos, setTodos] = useState<Todo[]>(() =>
+    JSON.parse(window.localStorage.getItem("todos") || "[]")
   );
+
   window.localStorage.setItem("todos", JSON.stringify(todos));
 
   //Todo 삭제하기
-  const deleteBtnHandler = (id) => {
-    const deletedTodoList = todos.filter((todos) => id !== todos.id);
+  const deleteBtnHandler = (id: string) => {
+    const deletedTodoList = todos.filter((todo: Todo) => id !== todo.id);
     setTodos(deletedTodoList);
   };
 
   //Todo 상태 완료하기 (1)
-  const finishBtnHandler = (todo) => {
-    setTodos((prev) => {
-      const finishedTodos = prev.map((item) => {
+  const finishBtnHandler = (todo: Todo) => {
+    setTodos((prev: Todo[]) => {
+      const finishedTodos = prev.map((item: Todo) => {
         if (item.id === todo.id) {
           return {
             ...todo,
@@ -36,9 +37,9 @@ function App() {
   };
 
   //Todo 상태 취소하기 (1)
-  const cancleBtnHandler = (todo) => {
-    setTodos((prev) => {
-      const canceledTodos = prev.map((item) => {
+  const cancleBtnHandler = (todo: Todo) => {
+    setTodos((prev: Todo[]) => {
+      const canceledTodos = prev.map((item: Todo) => {
         if (todo.id === item.id) {
           return {
             ...todo,

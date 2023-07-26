@@ -1,5 +1,16 @@
+import React from "react";
+import { BaseTodoComponentProps, Todo } from "../types";
+
+interface Props extends BaseTodoComponentProps {
+  finishBtnHandler: (item: Todo) => void;
+}
+
 //working 섹션 그리기
-const PaintWorkingTodo = ({ item, finishBtnHandler, deleteBtnHandler }) => {
+const PaintWorkingTodo = ({
+  item,
+  finishBtnHandler,
+  deleteBtnHandler,
+}: Props) => {
   return (
     <div className="todo-card" key={item.id}>
       <div className="todo-card-content">

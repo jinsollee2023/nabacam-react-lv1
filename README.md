@@ -18,3 +18,4 @@
 - AddTodo.jsx : 인풋창을 통해 받을 title, content의 useState를 갖고 있으며 투두리스트를 추가함
 - PaintWorkingTodo.jsx : Todos를 Working 섹션에 그려주는 역할을 함
 - PaintDoneTodo.jsx : Working 상태의 todos 중 완료된 todos를 Done 섹션에 그려주는 역할을 함
+# nabacam-typescript-lv1
